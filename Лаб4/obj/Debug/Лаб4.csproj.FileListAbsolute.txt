@@ -1,0 +1,10 @@
+D:\учьоба\обробка зображень\4\Лаб4\Лаб4\bin\Debug\Лаб4.exe.config
+D:\учьоба\обробка зображень\4\Лаб4\Лаб4\bin\Debug\Лаб4.exe
+D:\учьоба\обробка зображень\4\Лаб4\Лаб4\bin\Debug\Лаб4.pdb
+D:\учьоба\обробка зображень\4\Лаб4\Лаб4\obj\Debug\Лаб4.csprojResolveAssemblyReference.cache
+D:\учьоба\обробка зображень\4\Лаб4\Лаб4\obj\Debug\Лаб4.Form1.resources
+D:\учьоба\обробка зображень\4\Лаб4\Лаб4\obj\Debug\Лаб4.Properties.Resources.resources
+D:\учьоба\обробка зображень\4\Лаб4\Лаб4\obj\Debug\Лаб4.csproj.GenerateResource.cache
+D:\учьоба\обробка зображень\4\Лаб4\Лаб4\obj\Debug\Лаб4.csproj.CoreCompileInputs.cache
+D:\учьоба\обробка зображень\4\Лаб4\Лаб4\obj\Debug\Лаб4.exe
+D:\учьоба\обробка зображень\4\Лаб4\Лаб4\obj\Debug\Лаб4.pdb
