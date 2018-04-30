@@ -16,6 +16,7 @@ namespace Лаб4
         public Bitmap imgSolar { get; set; }
         public Bitmap imgWhiteBlack { get; set; }
         public Bitmap imgGistogramLightness { get; set; }
+        public Bitmap imgLinerized { get; set; }
         public int height { get; set; }
         public int width { get; set; }
         private RGBcolor RGBcolor;
@@ -32,7 +33,7 @@ namespace Лаб4
             imgSolar = new Bitmap(img);
             HSLconvertor.toHSL(RGBcolor, height, width);
             RGBcolor rgbNew = new RGBcolor();
-            rgbNew = HSLconvertor.toRGB(RGBcolor.A); // new rgb color
+            rgbNew = HSLconvertor.toRGB_solorized(RGBcolor.A); // new rgb color
 
             for (int y = 0; y < height; y++)
             {
@@ -109,8 +110,37 @@ namespace Лаб4
         }
 
         private void button4_Click(object sender, EventArgs e) // лінеаризація
-        {
+        { 
+            double min = double.Parse(textBox1.Text);
+            double max = double.Parse(textBox2.Text);
+            float L_new = float.Parse(textBox3.Text) ;
+            imgLinerized = new Bitmap(img);
+            HSLconvertor hsl = new HSLconvertor();
+            hsl.toHSL(RGBcolor, img.Height, img.Width);
 
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    if (hsl.L[i, j] > min && hsl.L[i, j] < max)
+                    {
+                        hsl.L[i, j] = L_new;
+                    }
+                }
+            }
+
+            RGBcolor rgb = new RGBcolor();
+            rgb = hsl.toRGB(RGBcolor.A);
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    imgLinerized.SetPixel(x,y, Color.FromArgb(rgb.A[x,y], rgb.R[x, y], rgb.G[x, y], rgb.B[x, y]));
+                }
+            }
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.Image = imgLinerized;
         }
 
         private void button3_Click(object sender, EventArgs e) // гістограма

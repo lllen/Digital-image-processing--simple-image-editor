@@ -104,7 +104,7 @@ namespace Лаб4
 
         }
 
-        public RGBcolor toRGB(int[,]A)
+        public RGBcolor toRGB_solorized(int[,]A)
         {
             double R = 0;
             double G = 0;
@@ -178,7 +178,77 @@ namespace Лаб4
         }
 
 
-        
-     
+        public RGBcolor toRGB(int[,] A)
+        {
+            double R = 0;
+            double G = 0;
+            double B = 0;
+
+            double C;
+            double X;
+            double m;
+
+            RGBcolor color = new RGBcolor();
+            color.R = new int[width, height];
+            color.G = new int[width, height];
+            color.B = new int[width, height];
+            color.A = new int[width, height];
+
+    
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                   
+                    C = (1 - Math.Abs(2 * this.L[x,y] - 1)) * this.S[x, y];
+                    X = C * (1 - Math.Abs((this.H[x, y] / 60) % 2 - 1));
+                    m = this.L[x, y] - C / 2;
+
+                    if (this.H[x, y] >= 0 && this.H[x, y] < 60)
+                    {
+                        R = C;
+                        G = X;
+                        B = 0;
+                    }
+                    else if (this.H[x, y] >= 60 && this.H[x, y] < 120)
+                    {
+                        R = X;
+                        G = C;
+                        B = 0;
+                    }
+                    else if (this.H[x, y] >= 120 && this.H[x, y] < 180)
+                    {
+                        R = 0;
+                        G = C;
+                        B = X;
+                    }
+                    else if (this.H[x, y] >= 180 && this.H[x, y] < 240)
+                    {
+                        R = 0;
+                        G = X;
+                        B = C;
+                    }
+                    else if (this.H[x, y] >= 240 && this.H[x, y] < 300)
+                    {
+                        R = X;
+                        G = 0;
+                        B = C;
+                    }
+                    else if (this.H[x, y] >= 300 && this.H[x, y] < 360)
+                    {
+                        R = C;
+                        G = 0;
+                        B = X;
+                    }
+                    color.A[x, y] = A[x, y];
+                    color.R[x, y] = (int)((R + m) * 255);
+                    color.G[x, y] = (int)((G + m) * 255);
+                    color.B[x, y] = (int)((B + m) * 255);
+                }
+            }
+            return color;
+        }
+
     }
 }
